@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<form method="post" asp-action="Register">
+    <input name="FullName" placeholder="Nama Lengkap" type="text"/>
+    <input name="Email" placeholder="Email" type="text"/>
+    <input name="BirthDate" placeholder="Tanggal Lahir" type="date"/>
+    <input name="Password" placeholder="Password" type="password" />
+    <button type="submit">Submit</button>
+</form>
