@@ -145,6 +145,37 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult ForgotPassword(string email, string newPassword)
         {
+            var data = myContext.Users
+                .Join(myContext.Employees, u => u.EmployeeId, emp => emp.Id, (u, emp) => new { u, emp })
+                .Join(myContext.Roles, ur => ur.u.RoleId, r => r.Id, (ur, r) => new
+                {
+                    Email = ur.emp.Email,
+                    Password = ur.u.Password,
+                    RoleId = ur.u.RoleId,
+                    UserId = ur.u.Id,
+                    EmployeeId = ur.u.EmployeeId                    
+                })
+                .SingleOrDefault(x => x.Email.Equals(email));
+
+            if (data != null)
+            {
+
+                User user = new()
+                {
+                    Id = data.UserId,
+                    Password = newPassword,
+                    RoleId = data.RoleId,
+                    EmployeeId = data.EmployeeId
+                };
+
+                myContext.Entry(user).State = EntityState.Modified;
+                var resultUser = myContext.SaveChanges();
+                if (resultUser > 0)
+                {
+                    return RedirectToAction("Login","Account");
+                }
+            }
+
             return View();
         }
     }

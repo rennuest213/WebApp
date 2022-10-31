@@ -11,14 +11,14 @@ namespace WebApp.Models
         {
         }
 
-        public User(int id, string password, int roleId, Role role, int employeeId, Employee employee)
+        
+
+        public User(int id, string password, int roleId, int employeeId)
         {
             Id = id;
             Password = password;
             RoleId = roleId;
-            Role = role;
             EmployeeId = employeeId;
-            Employee = employee;
         }
 
         public int Id { get; set; }
