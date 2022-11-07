@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Gws6ylrNNYpXpgJKMnxW30G4Mkf3bByvK2EIuXBypKgBsq7T58qM5r2b08DJ8cgwAzv9KJ4rFwW20yLeZTGhRQ==",
+  "dgSpecHash": "DoJVhFyjc7uYT+e3D3jzc9jLjEmiSym2Yt3Iy65IMPvik01/AVDjDvH8g6YtH73q/XBuPrUmxGkq7x1HW9Rjnw==",
   "success": true,
   "projectFilePath": "C:\\Nguli Onlen\\Latihan C Sharp\\WebApp\\WebApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",

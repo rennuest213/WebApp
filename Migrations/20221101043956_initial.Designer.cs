@@ -12,8 +12,8 @@ using WebApp.Context;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20221027073115_AddForeignKeyEmployee")]
-    partial class AddForeignKeyEmployee
+    [Migration("20221101043956_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -107,12 +107,6 @@ namespace WebApp.Migrations
             modelBuilder.Entity("WebApp.Models.User", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Password")
@@ -123,8 +117,6 @@ namespace WebApp.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("RoleId");
 
@@ -142,17 +134,21 @@ namespace WebApp.Migrations
 
             modelBuilder.Entity("WebApp.Models.User", b =>
                 {
-                    b.HasOne("WebApp.Models.Employee", null)
+                    b.HasOne("WebApp.Models.Employee", "Employee")
                         .WithMany("Users")
-                        .HasForeignKey("EmployeeId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApp.Models.Role", null)
+                    b.HasOne("WebApp.Models.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("WebApp.Models.Division", b =>

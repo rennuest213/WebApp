@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Models
 {
@@ -19,6 +21,7 @@ namespace WebApp.Models
 
         public int Id { get; set; }
         public string FullName { get; set; }
+        [Display(Name = "Email")]
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
         public ICollection<User> Users { get; set; }
