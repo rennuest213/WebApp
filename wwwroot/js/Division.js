@@ -84,7 +84,7 @@ function addDivision() {
         headers: {
             'Content-Type': 'application/json'
         },
-        success: function (datas) {
+        success: function() {
             Swal.fire(
                 'Good job!',
                 'Data Berhasil Ditambahkan!',

@@ -19,7 +19,7 @@ namespace WebApp.Controllers
         public IActionResult Index()
         {
             //var role = HttpContext.Session.GetString("Role");
-            var role = AccountController.getRole;
+            /*var role = AccountController.getRole;
             if (role == "admin")
             {
                 var data = myContext.Divisions.ToList();
@@ -29,7 +29,9 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("UnAuthorized", "ErrorPage");
             }
-            return RedirectToAction("Forbidden", "ErrorPage");
+            return RedirectToAction("Forbidden", "ErrorPage");*/
+            var data = myContext.Divisions.ToList();
+            return View(data);
         }
 
         //GET BY ID
