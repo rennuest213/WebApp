@@ -11,11 +11,15 @@ namespace WebApp.Controllers
     public class AccountController : Controller
     {
         MyContext myContext;
-
+        public static int? getId { get; set; }
+        public static string getFullName { get; set; }
+        public static string getEmail { get; set; }
+        public static string getRole { get; set; }
         public AccountController(MyContext myContext)
         {
             this.myContext = myContext;
         }
+
 
         //Get account
         public IActionResult Login()
@@ -55,7 +59,13 @@ namespace WebApp.Controllers
                 HttpContext.Session.SetInt32("Id", data.Id);
                 HttpContext.Session.SetString("FullName", data.Employee.FullName);
                 HttpContext.Session.SetString("Email", data.Employee.Email);
-                HttpContext.Session.SetString("Role", data.Role.Name);
+                HttpContext.Session.SetString(key:"Role",value: data.Role.Name);
+
+                getId = HttpContext.Session.GetInt32(key:"Id");
+                getFullName = HttpContext.Session.GetString("FullName");
+                getEmail = HttpContext.Session.GetString("Email");
+                getRole = HttpContext.Session.GetString("Role");
+
 
                 return RedirectToAction("Index", "Home");
             }

@@ -21,6 +21,14 @@ namespace WebApp
                 options.Cookie.IsEssential = true;
             });
 
+            builder.Services.AddMemoryCache();
+
+            /*builder.Services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => false;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });*/
+
             // Register service to MyContext
             builder.Services.AddDbContext<MyContext>(option => 
                 option.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));

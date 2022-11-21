@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using WebApp.Context;
 using WebApp.Models;
 
@@ -26,7 +27,7 @@ namespace WebApp.Controllers
         public IActionResult Details(int id)
         {
             var data = myContext.Departments.Find(id);
-            return View();
+            return View(data);
         }
 
         //INSERT - GET POST
@@ -83,7 +84,7 @@ namespace WebApp.Controllers
         }
 
         //DELETE - GET POST
-        /*public IActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             var data = myContext.Divisions.Find(id);
             return View(data);
@@ -100,6 +101,6 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Division");
             }
             return View();
-        }*/
+        }
     }
 }

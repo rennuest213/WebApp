@@ -15,9 +15,11 @@ namespace WebApp.Controllers
         }
 
         //GET ALL
+        
         public IActionResult Index()
         {
-            var role = HttpContext.Session.GetString("Role");
+            //var role = HttpContext.Session.GetString("Role");
+            var role = AccountController.getRole;
             if (role == "admin")
             {
                 var data = myContext.Divisions.ToList();
@@ -49,7 +51,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Division division)
         {
-            division.CreatedBy = HttpContext.Session.GetString("FullName");
+            //division.CreatedBy = HttpContext.Session.GetString("FullName");
+            division.CreatedBy = AccountController.getFullName;
             division.CreateDate = DateTime.Now.ToLocalTime();
             myContext.Divisions.Add(division);
             var result = myContext.SaveChanges();
